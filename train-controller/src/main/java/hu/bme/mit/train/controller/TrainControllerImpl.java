@@ -9,9 +9,6 @@ public class TrainControllerImpl implements TrainController {
 	private int speedLimit = 0;
 	private int direction = 1;
 
-	private int kukker = 3;
-	private int klikker = 69;
-
 	@Override
 	public void followSpeed() {
 		if (referenceSpeed == 0 && dirRequest() && step != 0) {
@@ -36,7 +33,7 @@ public class TrainControllerImpl implements TrainController {
 
 		int stepP = step > 0 ? 1 : -1;
 
-		return stepP == direction;
+		return stepP != direction;
 	}
 
 	@Override
