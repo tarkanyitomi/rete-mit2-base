@@ -11,6 +11,8 @@ public class TrainControllerImpl implements TrainController {
 
 	@Override
 	public void followSpeed() {
+		//IH7TM7
+
 
 		if (referenceSpeed == 0 && dirRequest() && step != 0) {
 			if (step > 0) {
