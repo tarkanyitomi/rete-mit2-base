@@ -55,6 +55,13 @@ Setting the reference speed of the train works in the following way.
 
 The figure below illustrates this behavior using an example.
 
+# Neptun: IH7TM7
+## Name: Tarkanyi Tamas
+### Retelabor[^1]
+
+[^1]: MIT2
+
+
 ![speed example](doc/speed_example.png)
 
 1. First, the reference speed and the joystick is both at zero.
