@@ -33,7 +33,7 @@ public class TrainControllerImpl implements TrainController {
 
 		int stepP = step > 0 ? 1 : -1;
 
-		return stepP == direction;
+		return stepP != direction;
 	}
 
 	@Override

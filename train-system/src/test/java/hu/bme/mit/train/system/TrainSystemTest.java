@@ -63,4 +63,30 @@ public class TrainSystemTest {
 		controller.followSpeed();
 		Assert.assertEquals(5, controller.getReferenceSpeed());
 	}
+
+	
+	public void BackwardSpeedLimit() {
+		sensor.overrideSpeedLimit(10);
+
+		user.overrideJoystickPosition(0);
+		controller.followSpeed();
+
+		Assert.assertEquals(0, controller.getReferenceSpeed());
+		Assert.assertEquals(1, controller.getDirection());
+
+		user.overrideJoystickPosition(-5);
+		controller.followSpeed();
+
+		Assert.assertEquals(0, controller.getReferenceSpeed());
+		Assert.assertEquals(-1, controller.getDirection());
+		
+		controller.followSpeed();
+		Assert.assertEquals(5, controller.getReferenceSpeed());
+
+		controller.followSpeed();
+		Assert.assertEquals(10, controller.getReferenceSpeed());
+		
+		controller.followSpeed();
+		Assert.assertEquals(10, controller.getReferenceSpeed());
+	}
 }
