@@ -9,11 +9,8 @@ public class TrainControllerImpl implements TrainController {
 	private int speedLimit = 0;
 	private int direction = 1;
 
-<<<<<<< HEAD
 	private int kukker = 3;
-=======
 	private int klikker = 69;
->>>>>>> branch-B
 
 	@Override
 	public void followSpeed() {
