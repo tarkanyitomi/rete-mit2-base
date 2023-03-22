@@ -64,7 +64,7 @@ public class TrainSystemTest {
 		Assert.assertEquals(5, controller.getReferenceSpeed());
 	}
 
-	
+	@Test
 	public void BackwardSpeedLimit() {
 		sensor.overrideSpeedLimit(10);
 
@@ -85,7 +85,6 @@ public class TrainSystemTest {
 
 		controller.followSpeed();
 		Assert.assertEquals(10, controller.getReferenceSpeed());
-		
 		controller.followSpeed();
 		Assert.assertEquals(10, controller.getReferenceSpeed());
 	}
