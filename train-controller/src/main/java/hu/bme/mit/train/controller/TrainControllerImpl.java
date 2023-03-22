@@ -7,25 +7,44 @@ public class TrainControllerImpl implements TrainController {
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+	private int direction = 1;
 
 	@Override
 	public void followSpeed() {
-		if (referenceSpeed < 0) {
-			referenceSpeed = 0;
+
+		if (referenceSpeed == 0 && dirRequest() && step != 0) {
+			if (step > 0) {
+				direction = 1;
+			} else {
+				direction = -1;
+			}
+		} else if (direction == 1) {
+			referenceSpeed += step;
 		} else {
-		    if(referenceSpeed+step > 0) {
-                referenceSpeed += step;
-            } else {
-		        referenceSpeed = 0;
-            }
+			referenceSpeed -= step;
 		}
 
 		enforceSpeedLimit();
 	}
 
+	private Boolean dirRequest() {
+		if (step == 0) {
+			return false;
+		}
+
+		int stepP = step > 0 ? 1 : -1;
+
+		return stepP == direction;
+	}
+
 	@Override
 	public int getReferenceSpeed() {
 		return referenceSpeed;
+	}
+
+	@Override
+	public int getDirection() {
+		return direction;
 	}
 
 	@Override
@@ -36,8 +55,8 @@ public class TrainControllerImpl implements TrainController {
 	}
 
 	private void enforceSpeedLimit() {
-		if (referenceSpeed > speedLimit) {
-			referenceSpeed = speedLimit;
+		if (referenceSpeed * direction > speedLimit) {
+			referenceSpeed = speedLimit * direction;
 		}
 	}
 
