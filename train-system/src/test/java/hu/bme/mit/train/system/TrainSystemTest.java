@@ -8,12 +8,15 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
+import hu.bme.mit.train.interfaces.Tachograph;
+import com.google.common.collect.Table;
 
 public class TrainSystemTest {
 
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
+	Tachograph tacho;
 	
 	@Before
 	public void before() {
@@ -21,6 +24,7 @@ public class TrainSystemTest {
 		controller = system.getController();
 		sensor = system.getSensor();
 		user = system.getUser();
+		tacho = system.getTacho();
 
 		sensor.overrideSpeedLimit(50);
 	}
@@ -87,5 +91,17 @@ public class TrainSystemTest {
 		Assert.assertEquals(10, controller.getReferenceSpeed());
 		controller.followSpeed();
 		Assert.assertEquals(10, controller.getReferenceSpeed());
+	}
+
+	@Test
+	public void recordDataTest() {
+		sensor.overrideSpeedLimit(10);
+		tacho.recordData();
+
+		Assert.assertEquals(1, tacho.getData().size());
+		
+		user.overrideJoystickPosition(5);
+		tacho.recordData();
+		Assert.assertEquals(2, tacho.getData().size());
 	}
 }
