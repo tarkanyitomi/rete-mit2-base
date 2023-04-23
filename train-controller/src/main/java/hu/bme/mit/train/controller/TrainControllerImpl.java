@@ -76,7 +76,7 @@ public class TrainControllerImpl implements TrainController {
 
 		if(this.timer == null) {
 			this.timer = new Timer();
-			this.timer.schedule(task, 0, 1000);
+			this.timer.schedule(task, 0, 500);
 		}
 
 	}
