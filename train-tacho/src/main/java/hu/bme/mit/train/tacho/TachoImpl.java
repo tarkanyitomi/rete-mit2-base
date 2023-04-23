@@ -1,10 +1,8 @@
 package hu.bme.mit.train.tacho;
 
 import hu.bme.mit.train.interfaces.TrainController;
-import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.interfaces.Tachograph;
-import java.util.Date;
 
 public class TachoImpl implements Tachograph {
 

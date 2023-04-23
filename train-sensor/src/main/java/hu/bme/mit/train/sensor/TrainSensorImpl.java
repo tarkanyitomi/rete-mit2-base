@@ -3,7 +3,6 @@ package hu.bme.mit.train.sensor;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
-import java.time.LocalDateTime;    
 
 public class TrainSensorImpl implements TrainSensor {
 
